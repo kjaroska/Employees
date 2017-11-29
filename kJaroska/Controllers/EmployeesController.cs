@@ -28,7 +28,7 @@ namespace kJaroska.Controllers
         {
             var dateFrom = Convert.ToDateTime(from);
             var dateTo = Convert.ToDateTime(to);
-            var viewModel = _db.Employees.Where(e => e.HireDate >= dateFrom && e.HireDate <= dateTo).ToList();
+            var viewModel = _db.Employees.Where(e => e.HireDate >= dateFrom && e.HireDate <= dateTo).Take(10).ToList();
 
             return PartialView("TableBody", viewModel);
         }
