@@ -35,3 +35,15 @@ textarea {
 #employeeList thead th {
     text-align: center;
 }
+
+#title {
+    display: inline-block;
+    display: inline-block;
+    float: left;
+}
+
+#spinner {
+    display: inline-block;
+    padding-top: 20px;
+    padding-left: 15px;
+}
