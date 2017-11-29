@@ -6,7 +6,7 @@
 }
 
 
-<h2>List of your employees</h2>
+<h2>List of Your employees</h2>
 
 <div id="tab">
     <table id="employeeList" class="table">
@@ -32,34 +32,10 @@
             <th>
                 <label for="names">Sort by Surname</label><br/>
                 <input id="names" placeholder="Name.." runat="server"/>
-                <script>
-                    $("#names").autocomplete({
-                        source: 'Controllers/Handlers/NameSortHandler.ashx',
-                        select: function (event, ui) {
-                            var searchQuery = ui.item.value;
-
-                            $("#tabBody").load('/Employees/SortByNames?query=' + searchQuery);               
-                        }
-                    });
-                </script>
             </th>
             <th>
-                <label for="datarange">Sort by Date Range</label><br/>
-                <input type="text" id="datarange" name="daterange" value="01/01/2017 - 01/01/2017"/>
-
-                <script type="text/javascript">
-                    $(function() {
-                        $('input[name="daterange"]').daterangepicker();
-                        $("#datarange").on("apply.daterangepicker",
-                            function(event, picker) {
-                                var start = picker.startDate.format("DD-MM-YYYY");
-                                var end = picker.endDate.format("DD-MM-YYYY");
-
-                                $("#tabBody").load("/Employees/SortByDates?from=" + start + "&to=" + end);
-                            });
-                    });
-                </script>
-            </th>
+            <label for="datarange">Sort by Date Range</label><br/>
+            <input type="text" id="datarange" name="daterange" value="01/01/2017 - 01/01/2017"/>
             <th>
                 <select id="department">
                     <option>Executive</option>
@@ -69,16 +45,6 @@
                     <option selected="selected">Production</option>
                     <option>Logistics</option>
                 </select>
-
-                <script>
-                    $("#department").selectmenu({ width: 'auto' });
-
-                    $("#department").on("selectmenuchange", function () {
-                        var department = $(this).val();
-
-                        $("#tabBody").load("/Employees/SortByDepartments?department=" + department);
-                    });
-                </script>
             </th>
             <th>
                 <select id="grade">
@@ -93,16 +59,6 @@
                     <option>9</option>
                     <option>10</option>
                 </select>
-
-                <script>
-                    $("#grade").selectmenu({ width: 'auto' });
-
-                    $("#grade").on("selectmenuchange",function() {
-                        var grade = $(this).val();
-
-                        $("#tabBody").load("/Employees/SortByGrades?grade=" + grade);
-                    });
-                </script>
             </th>
             <th>
                 <select id="manager">
@@ -113,20 +69,8 @@
                     <option>Ronald McMullen</option>
                     <option>Audrey Vencil</option>
                 </select>
-                <script>
-                    $("#manager").selectmenu({ width: 'auto' });
-
-                    $("#manager").on("selectmenuchange",
-                        function() {
-                            var manager = $(this).val();
-                            manager = manager.split(" ");
-
-                            $("#tabBody").load('/Employees/SortByManager?firstName=' + manager[0] + "&lastname=" + manager[1]);
-                        });
-                </script>
             </th>
         </tr>
-
         </thead>
 
         <tbody id="tabBody">
@@ -155,5 +99,3 @@
 
     </table>
 </div>
-
-
