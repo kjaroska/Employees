@@ -59,6 +59,11 @@
         });
 });
 
+
+$(document).ajaxError(function(event, request, settings) {
+    alert("Something went wrong!");
+});
+
 // Handle Spinner
 $(document).ajaxSend(function() {
     $("#spinner").show();
