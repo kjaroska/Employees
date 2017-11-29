@@ -1,7 +1,8 @@
-﻿$(function() {
+﻿$(function () {
+    //Hide Spinner
+    $("#spinner").hide();
 
-
-//    Sort By Names
+    //    Sort By Names
     $("#names").autocomplete({
         source: "Controllers/Handlers/NameSortHandler.ashx",
         select: function(event, ui) {
@@ -56,4 +57,13 @@
 
             $("#tabBody").load("/Employees/SortByManager?firstName=" + manager[0] + "&lastname=" + manager[1]);
         });
-})
+});
+
+// Handle Spinner
+$(document).ajaxSend(function() {
+    $("#spinner").show();
+});
+
+$(document).ajaxStop(function () {
+    $("#spinner").hide();
+});
